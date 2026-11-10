@@ -59,6 +59,10 @@ a{text-decoration:none;color:inherit}
 .nav-links{display:flex;align-items:center;gap:28px;list-style:none}
 .nav-links a{font-weight:600;font-size:.94rem;color:var(--ink-soft);transition:color .2s}
 .nav-links a:hover{color:var(--blue-600)}
+.nav-links a.btn-primary,
+.nav-links a.btn-primary:hover,
+.mobile-menu a.btn-primary,
+.mobile-menu a.btn-primary:hover{color:#fff}
 .btn{
   display:inline-flex;align-items:center;gap:8px;
   padding:.72rem 1.45rem;border-radius:12px;
@@ -260,14 +264,54 @@ section{padding:88px 0}
 .btn-white:hover{transform:translateY(-2px);box-shadow:0 20px 34px -10px rgba(9,32,66,.45)}
 
 /* ---------- Footer ---------- */
-.site-footer{border-top:1px solid var(--border);background:var(--bg);padding:30px 0}
-.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.site-footer{border-top:1px solid var(--border);background:#fff;padding:60px 0 26px}
+.footer-grid{
+  display:grid;grid-template-columns:1.6fr .8fr .8fr 1.1fr;
+  gap:44px 32px;align-items:start;padding-bottom:44px;
+  border-bottom:1px solid var(--border);
+}
 .site-footer .brand{font-size:1.02rem}
 .site-footer .brand-mark{width:28px;height:28px;border-radius:8px;font-size:.8rem}
-.footer-copy{color:var(--muted);font-size:.85rem}
+.footer-about{margin-top:16px;max-width:34ch;color:var(--muted);font-size:.88rem;line-height:1.7}
+
+/* Social buttons */
+.social-list{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin-top:22px}
+.social-link{
+  width:40px;height:40px;border-radius:12px;display:grid;place-items:center;
+  background:var(--blue-50);border:1px solid var(--border);
+  color:var(--ink-soft);
+  transition:transform .2s ease, color .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.social-link:hover{transform:translateY(-3px);color:#fff;border-color:transparent;box-shadow:0 10px 20px -8px rgba(13,31,60,.35)}
+.social-link.instagram:hover{background:linear-gradient(135deg,#f9ce34,#ee2a7b 55%,#6228d7)}
+.social-link.whatsapp:hover{background:#25d366;box-shadow:0 10px 20px -8px rgba(37,211,102,.75)}
+.social-link.email:hover{background:var(--blue-600);box-shadow:0 10px 20px -8px rgba(22,104,227,.7)}
+.social-link.tiktok:hover{background:#111;box-shadow:0 10px 20px -8px rgba(0,0,0,.5)}
+.social-link.linkedin:hover{background:#0a66c2;box-shadow:0 10px 20px -8px rgba(10,102,194,.7)}
+.social-link:focus-visible{outline:2px solid var(--blue-600);outline-offset:2px}
+
+/* Link columns */
+.footer-col h4{font-size:.82rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.footer-col ul{list-style:none;margin-top:16px;display:grid;gap:11px}
+.footer-col a{color:var(--muted);font-size:.88rem;font-weight:500;transition:color .2s ease}
+.footer-col a:hover{color:var(--blue-600)}
+.footer-contact li{display:flex;align-items:center;gap:9px;color:var(--muted);font-size:.88rem}
+.footer-contact svg{flex:0 0 auto;color:var(--blue-600)}
+.footer-contact a{word-break:break-word}
+
+.footer-bottom{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:14px;flex-wrap:wrap;padding-top:22px;
+}
+.footer-copy{color:var(--muted);font-size:.82rem}
+.footer-legal{display:flex;gap:22px;list-style:none}
+.footer-legal a{color:var(--muted);font-size:.82rem;font-weight:600;transition:color .2s ease}
+.footer-legal a:hover{color:var(--blue-600)}
 
 /* ---------- Responsive ---------- */
 @media (max-width:1024px){
+  .footer-grid{grid-template-columns:1.4fr 1fr 1fr;gap:36px 28px}
+  .footer-col:last-child{grid-column:1/-1}
   .hero-grid{grid-template-columns:1fr;gap:64px}
   .phone-wrap{order:2}
   .feature-grid{grid-template-columns:repeat(2,1fr)}
@@ -294,8 +338,14 @@ section{padding:88px 0}
   .cta{padding:56px 24px;border-radius:24px}
   .chip-a{left:6px}
   .chip-b{right:4px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .footer-brand{grid-column:1/-1}
+  .footer-col:last-child{grid-column:auto}
 }
 @media (max-width:560px){
+  .footer-grid{grid-template-columns:1fr;gap:30px}
+  .footer-col:last-child{grid-column:auto}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:12px}
   .feature-grid{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr}
   .steps .step-card:last-child{grid-column:auto}
